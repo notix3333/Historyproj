@@ -1,5 +1,5 @@
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
+const PAPER = "#ffffff";
 
 interface PullQuoteProps {
   text: string;

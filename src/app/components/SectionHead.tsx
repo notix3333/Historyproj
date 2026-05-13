@@ -26,7 +26,7 @@ export function SectionHead({
               fontFamily: "'Cinzel', serif",
               fontSize: "0.55rem",
               letterSpacing: "0.28em",
-              color: "#ebe0c9",
+              color: "#ffffff",
             }}
           >
             {kicker.toUpperCase()}
@@ -44,6 +44,7 @@ export function SectionHead({
           fontWeight: 900,
           lineHeight: 1.1,
           color: INK,
+          textWrap: "balance",
         }}
       >
         {headline}

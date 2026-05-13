@@ -1,5 +1,5 @@
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
+const PAPER = "#ffffff";
 
 const cipherRows = [
   { num: "124", value: "А", num2: "218", value2: "де" },
@@ -89,10 +89,7 @@ export function CipherSection() {
               </thead>
               <tbody>
                 {cipherRows.map((row, i) => (
-                  <tr
-                    key={i}
-                    style={{ background: i % 2 === 0 ? `${INK}06` : PAPER }}
-                  >
+                  <tr key={i} style={{ background: i % 2 === 0 ? `${INK}04` : PAPER }}>
                     <td
                       className="px-3 py-1.5 text-center font-mono"
                       style={{ fontSize: "0.82rem", border: `1px solid ${INK}30`, color: INK }}
@@ -183,12 +180,14 @@ export function CipherSection() {
               style={{ borderLeft: `4px solid ${INK}` }}
             >
               <p
-                className="leading-relaxed text-justify"
+                className="leading-relaxed"
                 style={{
                   fontFamily: "'Libre Baskerville', serif",
-                  fontSize: "0.9rem",
-                  lineHeight: 1.8,
+                  fontSize: "0.95rem",
+                  lineHeight: 1.76,
                   color: INK,
+                  textAlign: "left",
+                  textWrap: "pretty",
                 }}
               >
                 Система была разработана Антуаном Россиньолем и его сыном
@@ -200,12 +199,14 @@ export function CipherSection() {
             </div>
 
             <p
-              className="leading-relaxed text-justify mb-4"
+              className="leading-relaxed mb-4"
               style={{
                 fontFamily: "'Libre Baskerville', serif",
-                fontSize: "0.9rem",
-                lineHeight: 1.8,
+                fontSize: "0.95rem",
+                lineHeight: 1.76,
                 color: INK,
+                textAlign: "left",
+                textWrap: "pretty",
               }}
             >
               Особую сложность создавали «пустышки» — числа, не несущие смысла
@@ -215,12 +216,14 @@ export function CipherSection() {
             </p>
 
             <p
-              className="leading-relaxed text-justify mb-4"
+              className="leading-relaxed mb-4"
               style={{
                 fontFamily: "'Libre Baskerville', serif",
-                fontSize: "0.9rem",
-                lineHeight: 1.8,
+                fontSize: "0.95rem",
+                lineHeight: 1.76,
                 color: INK,
+                textAlign: "left",
+                textWrap: "pretty",
               }}
             >
               После смерти обоих Россиньолей тайна шифра была утрачена.

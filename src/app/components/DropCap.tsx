@@ -9,12 +9,14 @@ export function DropCap({ letter, rest }: DropCapProps) {
   return (
     <div className="mb-4 overflow-hidden">
       <p
-        className="text-justify"
         style={{
           fontFamily: "'Libre Baskerville', serif",
-          fontSize: "0.9rem",
-          lineHeight: 1.82,
+          fontSize: "0.95rem",
+          lineHeight: 1.76,
           color: INK,
+          textAlign: "left",
+          textWrap: "pretty",
+          hyphens: "auto",
         }}
       >
         <span

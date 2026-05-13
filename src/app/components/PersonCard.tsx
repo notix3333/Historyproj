@@ -1,5 +1,5 @@
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
+const PAPER = "#ffffff";
 
 interface Person {
   name: string;
@@ -170,12 +170,14 @@ export function PersonsSection() {
               </div>
 
               <p
-                className="text-justify leading-relaxed"
+                className="leading-relaxed"
                 style={{
                   fontFamily: "'Libre Baskerville', serif",
                   fontSize: "0.88rem",
                   lineHeight: 1.8,
                   color: INK,
+                  textAlign: "left",
+                  textWrap: "pretty",
                 }}
               >
                 {p.description}

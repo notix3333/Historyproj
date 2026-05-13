@@ -1,35 +1,37 @@
 import React from "react";
 import { NewspaperHeader } from "./components/NewspaperHeader";
 import { DropCap } from "./components/DropCap";
-import { Divider } from "./components/Divider";
 import { PullQuote } from "./components/PullQuote";
 import { ArticleImage } from "./components/ArticleImage";
 import { SectionHead } from "./components/SectionHead";
 import { TimelineSection } from "./components/TimelineSection";
 import { PersonsSection } from "./components/PersonCard";
 import { CipherSection } from "./components/CipherSection";
+import museumOverview from "../assets/museum/museum-overview.jpg";
+import blackChambersPanel from "../assets/museum/black-chambers-panel.jpg";
+import habsburgAudio from "../assets/museum/habsburg-audio.jpg";
+import englandMap from "../assets/museum/england-map.jpg";
+import toolsCase from "../assets/museum/tools-case.jpg";
+import sealsDocuments from "../assets/museum/seals-documents.jpg";
+import stPetersburgWorkers from "../assets/museum/st-petersburg-workers.jpg";
+import cipherClock from "../assets/museum/cipher-clock.jpg";
 
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
-
-// ── Images ─────────────────────────────────────────────────────
-const IMG_CANDLE       = "https://images.unsplash.com/photo-1778078983791-dd2c49698c46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
-const IMG_SEAL         = "https://images.unsplash.com/photo-1641477176034-1a3e10c343a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
-const IMG_VERSAILLES   = "https://images.unsplash.com/photo-1760543329953-db4eacb70108?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
-const IMG_CIPHER_BG    = "https://images.unsplash.com/photo-1716840550677-31616e88f51b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
-const IMG_LIBRARY      = "https://images.unsplash.com/photo-1758730010177-1711515b7552?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
-const IMG_VIENNA       = "https://images.unsplash.com/photo-1728839869046-3e603270b5da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
+const PAPER = "#ffffff";
 
 // ── Reusable text body ──────────────────────────────────────────
 function Body({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <p
-      className={`text-justify mb-4 ${className}`}
+      className={`mb-4 ${className}`}
       style={{
         fontFamily: "'Libre Baskerville', serif",
-        fontSize: "0.9rem",
-        lineHeight: 1.82,
+        fontSize: "0.95rem",
+        lineHeight: 1.76,
         color: INK,
+        textAlign: "left",
+        textWrap: "pretty",
+        hyphens: "auto",
       }}
     >
       {children}
@@ -41,7 +43,7 @@ function Body({ children, className = "" }: { children: React.ReactNode; classNa
 function SectionBanner({ left, right }: { left: string; right: string }) {
   return (
     <div
-      className="flex items-center justify-between px-8 py-2.5"
+      className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between px-8 py-2.5 text-center"
       style={{ background: INK, color: PAPER, borderTop: `3px double ${INK}` }}
     >
       <span style={{ fontFamily: "'Cinzel', serif", fontSize: "0.6rem", letterSpacing: "0.25em" }}>
@@ -109,23 +111,12 @@ const methods = [
 export default function App() {
   const paperStyle: React.CSSProperties = {
     backgroundColor: PAPER,
-    backgroundImage: `
-      repeating-linear-gradient(
-        transparent 0px,
-        transparent 27px,
-        rgba(14,11,7,0.028) 27px,
-        rgba(14,11,7,0.028) 28px
-      )`,
     color: INK,
     minHeight: "100vh",
   };
 
-  const colDivider: React.CSSProperties = {
-    borderRight: `1px solid ${INK}`,
-  };
-
   return (
-    <div style={paperStyle}>
+    <div style={paperStyle} lang="ru">
       {/* Outer frame */}
       <div
         className="max-w-[1140px] mx-auto"
@@ -137,27 +128,20 @@ export default function App() {
           {/* ════════════════════════════════════════════
               HERO HEADLINE
           ════════════════════════════════════════════ */}
-          <section className="px-8 py-8 text-center" style={{ borderBottom: `2px solid ${INK}` }}>
-            <div
-              className="tracking-[0.35em] uppercase mb-4"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "0.58rem", color: `${INK}80` }}
-            >
-              — Специальное историческое расследование —
-            </div>
-
+          <section id="section-0" className="px-8 py-9 text-center" style={{ borderBottom: `2px solid ${INK}` }}>
             <h1
               className="mx-auto mb-4"
               style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2rem, 6vw, 4rem)",
+                fontSize: "clamp(2rem, 5.6vw, 3.8rem)",
                 fontWeight: 900,
                 lineHeight: 1.05,
                 color: INK,
                 maxWidth: "820px",
+                textWrap: "balance",
               }}
             >
-              Тайные Кабинеты, что Читали Письма
-              Королей и Министров
+              Как государства читали чужие письма
             </h1>
 
             {/* Ornamental rule */}
@@ -178,9 +162,64 @@ export default function App() {
                 color: `${INK}cc`,
               }}
             >
-              История европейских служб перехвата корреспонденции — от Ришелье до Меттерниха —
-              и людей, превративших чужие тайны в оружие власти
+              История перлюстрации
             </p>
+          </section>
+
+          <section className="px-8 py-8" style={{ borderBottom: `3px double ${INK}` }}>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.85fr] gap-8 items-start">
+              <ArticleImage
+                src={museumOverview}
+                caption="Общий вид музейной экспозиции: стенды, интерактивные станции и линия истории почтового надзора."
+                tone="museum"
+                height="340px"
+                objectPosition="center 42%"
+                className="my-0"
+              />
+
+              <div>
+                <SectionHead
+                  kicker="Экспозиция"
+                  headline="От текста к маршруту по криптографическому музею"
+                  subheadline="Адрес: Ботаническая ул., 25 строение 4, Москва, 127276"
+                />
+                <Body>
+                  Мы посетили криптографический музей и не смогли оставить без
+                  внимания стенд, посвящённый тайной деятельности «чёрных
+                  кабинетов». Заинтересовавшись этой темой, мы решили изучить
+                  дополнительные материалы и обнаружили множество любопытных
+                  фактов об их работе. Наш рассказ будет подкреплён реальными
+                  музейными экспонатами.
+                </Body>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+              <ArticleImage
+                src={blackChambersPanel}
+                caption="Вводный стенд экспозиции: что называли «чёрными кабинетами» и зачем они возникли."
+                tone="museum"
+                height="210px"
+                objectPosition="center 32%"
+                className="my-0"
+              />
+              <ArticleImage
+                src={toolsCase}
+                caption="Инструменты перлюстратора и криптографа: пар, тонкие ножи, печати и вспомогательные приборы."
+                tone="museum"
+                height="210px"
+                objectPosition="center 40%"
+                className="my-0"
+              />
+              <ArticleImage
+                src={cipherClock}
+                caption="Музейный блок о шифровании и почтовой цензуре: скорость вскрытия писем была частью системы."
+                tone="museum"
+                height="210px"
+                objectPosition="center 42%"
+                className="my-0"
+              />
+            </div>
           </section>
 
           {/* ════════════════════════════════════════════
@@ -190,8 +229,8 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1.7fr_1fr] gap-0">
 
               {/* ── Col 1: История ── */}
-              <div className="md:pr-7 pb-7 md:pb-0" style={{ ...colDivider }}>
-                <SectionHead kicker="Что такое" headline="Чёрный Кабинет?" />
+              <div className="md:pr-7 pb-7 md:pb-0 md:border-r md:border-[#0e0b07]">
+                <SectionHead kicker="Что такое" headline="Черные кабинеты" />
                 <DropCap
                   letter="Ч"
                   rest="ЁРНЫМ КАБИНЕТОМ, или Cabinet Noir по-французски, именовали тайные государственные службы, главной задачей которых было перехватывать, вскрывать, копировать и снова запечатывать письма — так, чтобы никто не заметил следов."
@@ -208,17 +247,21 @@ export default function App() {
                   официально никогда не признавалось.
                 </Body>
                 <ArticleImage
-                  src={IMG_SEAL}
-                  caption="Восковая печать — и главное препятствие, и главный инструмент чёрных кабинетов. Европа, ок. 1740 г."
+                  src={blackChambersPanel}
+                  caption="Музейный стенд объясняет, почему перехват писем стал отдельной государственной практикой."
+                  tone="museum"
+                  objectPosition="center 30%"
                 />
               </div>
 
               {/* ── Col 2: Вена ── */}
-              <div id="section-1" className="md:px-7 border-t-2 md:border-t-0 border-[#0e0b07] pt-7 md:pt-0 pb-7 md:pb-0" style={{ borderRight: `1px solid ${INK}` }}>
+              <div id="section-1" className="md:px-7 border-t-2 md:border-t-0 md:border-r border-[#0e0b07] pt-7 md:pt-0 pb-7 md:pb-0">
                 <ArticleImage
-                  src={IMG_VIENNA}
-                  caption="Венский почтамт — здесь располагалась Geheime Kabinets-Kanzlei, образцовая служба тайного перехвата, 1703–1848 гг."
+                  src={habsburgAudio}
+                  caption="Интерактивный музейный блок о Габсбургской монархии напоминает: австрийская служба стала образцом для всей Европы."
                   tall
+                  tone="museum"
+                  objectPosition="center 48%"
                 />
                 <SectionHead
                   kicker="Австрия · Вена"
@@ -280,8 +323,14 @@ export default function App() {
                         {c.name}
                       </div>
                       <p
-                        className="text-justify"
-                        style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "0.82rem", lineHeight: 1.7, color: INK }}
+                        style={{
+                          fontFamily: "'Libre Baskerville', serif",
+                          fontSize: "0.84rem",
+                          lineHeight: 1.68,
+                          color: INK,
+                          textAlign: "left",
+                          textWrap: "pretty",
+                        }}
                       >
                         {c.desc}
                       </p>
@@ -301,11 +350,13 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1.7fr_1fr] gap-0">
 
               {/* ── France ── */}
-              <div id="section-2" className="md:pr-7 pb-7 md:pb-0" style={colDivider}>
+              <div id="section-2" className="md:pr-7 pb-7 md:pb-0 md:border-r md:border-[#0e0b07]">
                 <SectionHead kicker="Франция · Париж" headline="Cabinet Noir: от Ришелье до Наполеона" />
                 <ArticleImage
-                  src={IMG_VERSAILLES}
-                  caption="Версальский дворец — политический центр Европы и главный источник перехваченных тайн для Cabinet Noir."
+                  src={sealsDocuments}
+                  caption="Печати, списки и копии писем показывают материальную сторону перлюстрации: вскрыть, переписать, вернуть следы на место."
+                  tone="museum"
+                  objectPosition="center 44%"
                 />
                 <DropCap
                   letter="Ф"
@@ -327,7 +378,7 @@ export default function App() {
               </div>
 
               {/* ── England ── */}
-              <div id="section-3" className="md:px-7 border-t-2 md:border-t-0 border-[#0e0b07] pt-7 md:pt-0 pb-7 md:pb-0" style={{ borderRight: `1px solid ${INK}` }}>
+              <div id="section-3" className="md:px-7 border-t-2 md:border-t-0 md:border-r border-[#0e0b07] pt-7 md:pt-0 pb-7 md:pb-0">
                 <SectionHead
                   kicker="Англия · Лондон"
                   headline="Secret Office: Когда Парламент Потребовал Ответа"
@@ -338,7 +389,7 @@ export default function App() {
                   rest="НГЛИЙСКИЙ «Секретный кабинет» при Почтовом ведомстве вёл историю от Кромвеля. Его учредил Джон Тёрло для слежки за перепиской роялистов и иностранных врагов республики. После Реставрации служба была сохранена монархией — новые власти быстро оценили её возможности."
                 />
 
-                <div className="flex gap-5 items-start mb-2">
+                <div className="flex flex-col sm:flex-row gap-5 items-start mb-2">
                   <div className="flex-1">
                     <Body>
                       Первый публичный скандал разразился в 1762 году: обнаружилось, что
@@ -353,9 +404,11 @@ export default function App() {
                     </Body>
                   </div>
                   <ArticleImage
-                    src={IMG_LIBRARY}
-                    caption="Архивы Secret Office хранили копии депеш за 200 лет."
-                    className="w-32 shrink-0"
+                    src={englandMap}
+                    caption="Музейная карта показывает связь британского Secret Office с общей европейской сетью перехвата."
+                    className="w-full sm:w-40 shrink-0"
+                    tone="museum"
+                    objectPosition="center"
                   />
                 </div>
 
@@ -376,8 +429,10 @@ export default function App() {
               <div id="section-4" className="md:pl-7 border-t-2 md:border-t-0 border-[#0e0b07] pt-7 md:pt-0">
                 <SectionHead kicker="Россия · Петербург" headline="Чёрный Кабинет Романовых" />
                 <ArticleImage
-                  src={IMG_CANDLE}
-                  caption="Переписчики работали при свечах. Одно письмо копировалось за три–четыре минуты."
+                  src={stPetersburgWorkers}
+                  caption="Стенд о составе сотрудников Санкт-Петербургского «чёрного кабинета»: письма, конверты, печати и рабочий инструментарий."
+                  tone="museum"
+                  objectPosition="center 40%"
                 />
                 <DropCap
                   letter="П"
@@ -452,6 +507,30 @@ export default function App() {
               Шесть основных приёмов, которыми пользовались все европейские чёрные кабинеты
             </p>
 
+            <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-7 items-start mb-8">
+              <ArticleImage
+                src={toolsCase}
+                caption="Музейная витрина с предметами перлюстратора: именно такие инструменты переводят абстрактное «вскрытие писем» в понятную технологию."
+                tone="museum"
+                tall
+                objectPosition="center 42%"
+                className="my-0"
+              />
+              <div className="pt-1">
+                <SectionHead
+                  kicker="Материалы"
+                  headline="Тайная работа была ремеслом"
+                  subheadline="За политическими решениями стояли конкретные предметы: ножи, паровые приборы, печати, журналы регистрации и копии документов."
+                />
+                <Body>
+                  Фотографии экспозиции помогают показать, что чёрные кабинеты
+                  были не только политическим институтом, но и мастерской точных
+                  процедур. Ошибка в печати или неверно сложенный конверт могли
+                  раскрыть всю операцию.
+                </Body>
+              </div>
+            </div>
+
             <div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
               style={{ border: `2px solid ${INK}` }}
@@ -503,8 +582,15 @@ export default function App() {
                   <div style={{ height: 1, background: `${INK}30`, marginBottom: 12 }} />
 
                   <p
-                    className="text-justify leading-relaxed"
-                    style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "0.87rem", lineHeight: 1.8, color: INK }}
+                    className="leading-relaxed"
+                    style={{
+                      fontFamily: "'Libre Baskerville', serif",
+                      fontSize: "0.9rem",
+                      lineHeight: 1.74,
+                      color: INK,
+                      textAlign: "left",
+                      textWrap: "pretty",
+                    }}
                   >
                     {m.body}
                   </p>
@@ -516,33 +602,21 @@ export default function App() {
           {/* ════════════════════════════════════════════
               FINAL BANNER
           ════════════════════════════════════════════ */}
-          <section style={{ borderTop: `3px double ${INK}` }}>
-            <div className="relative overflow-hidden" style={{ height: "360px" }}>
-              <img
-                src={IMG_CIPHER_BG}
-                alt="Тайный документ"
-                className="w-full h-full object-cover"
-                style={{
-                  filter: "grayscale(85%) sepia(30%) contrast(1.2) brightness(0.7)",
-                  objectPosition: "center 30%",
-                }}
-              />
-              <div
-                className="absolute inset-0 flex flex-col items-center justify-center px-8"
-                style={{ background: "linear-gradient(to bottom, rgba(14,11,7,0.4) 0%, rgba(14,11,7,0.88) 100%)", color: PAPER }}
-              >
+          <section id="epilogue" style={{ borderTop: `3px double ${INK}` }}>
+            <div className="px-8 py-12" style={{ background: PAPER, color: INK }}>
+              <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
                 <div
                   className="tracking-[0.4em] uppercase mb-5"
-                  style={{ fontFamily: "'Cinzel', serif", fontSize: "0.58rem", opacity: 0.7 }}
+                  style={{ fontFamily: "'Cinzel', serif", fontSize: "0.58rem", color: `${INK}80` }}
                 >
                   — Эпилог —
                 </div>
 
                 {/* Ornamental rule */}
                 <div className="flex items-center gap-3 max-w-md w-full mx-auto mb-5">
-                  <div className="flex-1" style={{ height: 1, background: `${PAPER}50` }} />
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.7rem", color: `${PAPER}60` }}>✦</span>
-                  <div className="flex-1" style={{ height: 1, background: `${PAPER}50` }} />
+                  <div className="flex-1" style={{ height: 1, background: `${INK}60` }} />
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.7rem", color: `${INK}80` }}>✦</span>
+                  <div className="flex-1" style={{ height: 1, background: `${INK}60` }} />
                 </div>
 
                 <h2
@@ -552,8 +626,8 @@ export default function App() {
                     fontSize: "clamp(1.4rem, 4vw, 2.8rem)",
                     fontWeight: 900,
                     lineHeight: 1.1,
-                    textShadow: "0 2px 16px rgba(0,0,0,0.6)",
-                    color: PAPER,
+                    color: INK,
+                    textWrap: "balance",
                   }}
                 >
                   «Никакого Чёрного Кабинета Не Существует»
@@ -565,8 +639,7 @@ export default function App() {
                     fontFamily: "'IM Fell English', serif",
                     fontSize: "1.05rem",
                     lineHeight: 1.65,
-                    textShadow: "0 1px 6px rgba(0,0,0,0.8)",
-                    color: `${PAPER}cc`,
+                    color: `${INK}cc`,
                   }}
                 >
                   Официальный ответ австрийского правительства на запрос
@@ -583,19 +656,19 @@ export default function App() {
             className="px-8 py-8"
             style={{ borderTop: `3px double ${INK}` }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-[0.8fr_1.4fr] gap-10">
               <div>
                 <div
                   className="mb-2"
                   style={{ fontFamily: "'UnifrakturMaguntia', cursive", fontSize: "2rem", color: INK }}
                 >
-                  Чёрный Кабинетъ
+                  Черные кабинеты
                 </div>
                 <p
                   className="italic"
                   style={{ fontFamily: "'IM Fell English', serif", fontSize: "0.88rem", lineHeight: 1.6, color: `${INK}c0` }}
                 >
-                  Историческое издание о тайнах европейского почтового шпионажа
+                  Музейный проект о тайнах европейского почтового шпионажа
                 </p>
               </div>
 
@@ -606,45 +679,30 @@ export default function App() {
                 >
                   Источники
                 </div>
-                <ul style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "0.72rem", lineHeight: 1.9, color: `${INK}90` }}>
-                  <li>Kahn D. <em>The Codebreakers</em>, 1967</li>
-                  <li>Andrew C. <em>The Secret World</em>, 2018</li>
-                  <li>Yardley H. <em>The American Black Chamber</em>, 1931</li>
-                  <li>Ellis B. <em>Post Office Espionage</em>, 2001</li>
+                <ul
+                  className="space-y-2"
+                  style={{
+                    fontFamily: "'Libre Baskerville', serif",
+                    fontSize: "0.75rem",
+                    lineHeight: 1.65,
+                    color: `${INK}90`,
+                  }}
+                >
+                  <li>
+                    Змозик В. С. <em>«Чёрные кабинеты»: история российской перлюстрации. XVIII — начало XX века.</em> М.: Новое литературное обозрение, 2015.
+                  </li>
+                  <li>
+                    Соболева Т. А. <em>История шифровального дела в России.</em> М.: ОЛМА-ПРЕСС, 2002.
+                  </li>
+                  <li>
+                    Токарева Н. Н. Об истории криптографии в России // <em>Прикладная дискретная математика.</em> 2012.
+                  </li>
+                  <li>
+                    Бабаш А. В., Шанкин Г. П. <em>История криптографии. Часть I.</em> М.: Гелиос, 2002.
+                  </li>
                 </ul>
               </div>
-
-              <div className="md:text-right">
-                <div
-                  className="uppercase tracking-[0.2em] mb-3"
-                  style={{ fontFamily: "'Cinzel', serif", fontSize: "0.58rem", color: `${INK}70`, borderBottom: `1px solid ${INK}30`, paddingBottom: 8 }}
-                >
-                  Примечание
-                </div>
-                <p
-                  style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "0.72rem", lineHeight: 1.8, color: `${INK}90` }}
-                >
-                  Все сведения основаны на открытых исторических
-                  источниках. Материал носит образовательный характер.
-                  Любые совпадения с современными практиками
-                  случайны и непреднамеренны.
-                </p>
-              </div>
             </div>
-
-            <Divider stars />
-
-            <p
-              className="text-center"
-              style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: "0.6rem",
-                letterSpacing: "0.1em",
-                color: `${INK}60`,
-              }}
-            >
-              «Тайна переписки нарушается лишь в силу государственной необходимости» &nbsp;—&nbsp; Меттерних
-            </p>
           </footer>
         </main>
       </div>

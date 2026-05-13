@@ -1,5 +1,5 @@
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
+const PAPER = "#ffffff";
 
 const events = [
   { year: "1590", country: "Франция", event: "Генрих IV учреждает тайный перехват дипломатической переписки при королевском дворе." },

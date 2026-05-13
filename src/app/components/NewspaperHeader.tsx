@@ -1,5 +1,5 @@
 const INK = "#0e0b07";
-const PAPER = "#ebe0c9";
+const PAPER = "#ffffff";
 
 const navItems = [
   { label: "История", id: "section-0" },
@@ -20,12 +20,15 @@ export function NewspaperHeader() {
 
       {/* ── EDITION BAR ── */}
       <div
-        className="flex justify-between items-center px-8 py-1.5"
-        style={{ borderBottom: `1px solid ${INK}`, fontFamily: "'Cinzel', serif", fontSize: "0.58rem", letterSpacing: "0.12em" }}
+        className="px-8 py-2 text-center"
+        style={{
+          borderBottom: `1px solid ${INK}`,
+          fontFamily: "'Cinzel', serif",
+          fontSize: "0.62rem",
+          letterSpacing: "0.18em",
+        }}
       >
-        <span>ТОМ CXLVI · НОМ. XLVII</span>
-        <span className="tracking-[0.22em]">✦ &nbsp; ИСТОРИЧЕСКОЕ ИЗДАНИЕ &nbsp; ✦</span>
-        <span>ОСНОВАНО В ЛЕТО 1703 Г.</span>
+        <span>Музейный проект</span>
       </div>
 
       {/* ── MASTHEAD ── */}
@@ -35,7 +38,7 @@ export function NewspaperHeader() {
           className="tracking-[0.5em] uppercase mb-3"
           style={{ fontFamily: "'Cinzel', serif", fontSize: "0.58rem" }}
         >
-          — Тайные Архивы Европейских Державъ —
+          Попов Николай Матюшкин Владислав
         </div>
 
         {/* Ornamental rule */}
@@ -50,12 +53,13 @@ export function NewspaperHeader() {
           className="select-none leading-none mb-1"
           style={{
             fontFamily: "'UnifrakturMaguntia', cursive",
-            fontSize: "clamp(3.2rem, 9vw, 6.5rem)",
+            fontSize: "clamp(2.8rem, 8vw, 5.8rem)",
             color: INK,
-            letterSpacing: "-0.01em",
+            letterSpacing: "0",
+            textWrap: "balance",
           }}
         >
-          Чёрный Кабинетъ
+          Черные кабинеты
         </h1>
 
         {/* Ornamental rule */}
@@ -69,18 +73,10 @@ export function NewspaperHeader() {
 
         {/* Subtitle */}
         <div
-          className="tracking-[0.35em] uppercase"
-          style={{ fontFamily: "'Cinzel', serif", fontSize: "0.62rem" }}
+          className="tracking-[0.18em] sm:tracking-[0.35em] uppercase"
+          style={{ fontFamily: "'Cinzel', serif", fontSize: "0.62rem", lineHeight: 1.65 }}
         >
-          Cabinet&nbsp;Noir &nbsp;·&nbsp; Geheime&nbsp;Kabinets-Kanzlei &nbsp;·&nbsp; The&nbsp;Secret&nbsp;Office
-        </div>
-
-        {/* Date bar */}
-        <div
-          className="mt-3 tracking-widest"
-          style={{ fontFamily: "'Cinzel', serif", fontSize: "0.55rem", opacity: 0.6 }}
-        >
-          Два Века Тайного Почтового Надзора &nbsp;·&nbsp; 1590 — 1848
+          ББИ-25-6
         </div>
       </div>
 
